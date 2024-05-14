@@ -6,12 +6,12 @@ const errorHandler = require('./middleware/errorHandler');
 const app = express();
 
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: false }));
 // Adds HTTP Headers
 app.use(helmet());
 
 // Define routes
-app.use('/api', routes);
+app.use('/', routes);
 
 // Error handling middleware
 app.use(errorHandler);

@@ -1,8 +1,10 @@
 const express = require('express');
-const openaiController = require('../controllers/openaiController');
+const {getOpenAiResponse} = require('../controllers/openaiController');
 
+// Create a new Express router instance
 const router = express.Router();
 
-router.get('/', openaiController.getOpenAiResponse);
+// Define a route for the root URL ('/') that uses the getOpenAiResponse function as its handler
+router.get('/', getOpenAiResponse);
 
 module.exports = router;
