@@ -5,6 +5,6 @@ const {getOpenAiResponse} = require('../controllers/openaiController');
 const router = express.Router();
 
 // Define a route for the root URL ('/') that uses the getOpenAiResponse function as its handler
-router.get('/', getOpenAiResponse);
+router.post('/', getOpenAiResponse);
 
 module.exports = router;
