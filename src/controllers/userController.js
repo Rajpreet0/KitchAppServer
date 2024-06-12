@@ -20,3 +20,29 @@ exports.getUserByEmailAndPassword = async (req, res) => {
         res.status(500).json({error: 'Something went wrong'});
     }
 }
+
+exports.registerUser = async (req, res) => {
+    const {email,password, username} = req.body;
+
+    try {
+        const exisitngUser = await User.findOne({email});
+
+        if(exisitngUser) {
+            return res.status(400).json({error: 'Email already in use'});
+        }
+
+        const newUser = new User({
+            email,
+            password,
+            username
+        });
+
+        const savedUser = await newUser.save();
+
+        res.status(201).json(savedUser);
+
+    }catch(error) {
+        console.log('Error registering user: ', error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+}

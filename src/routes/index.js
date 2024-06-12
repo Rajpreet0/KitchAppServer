@@ -1,6 +1,6 @@
 const express = require('express');
 const {getOpenAiResponse} = require('../controllers/openaiController');
-const { getUserByEmailAndPassword } = require('../controllers/userController');
+const { getUserByEmailAndPassword, registerUser } = require('../controllers/userController');
 
 // Create a new Express router instance
 const router = express.Router();
@@ -11,5 +11,6 @@ router.post('/', getOpenAiResponse);
 
 // Define routes for user data
 router.post('/users/login', getUserByEmailAndPassword);
+router.post('/users/register', registerUser);
 
 module.exports = router;
